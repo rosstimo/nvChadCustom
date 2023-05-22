@@ -3,6 +3,12 @@
 
 local M = {}
 
+M.maps = {
+  n = {
+    ["<leader>m"] = {":map<cr>", "Show keymaps"},
+  },
+}
+
 M.crazy = {
 
   v = {
@@ -467,4 +473,3 @@ M.gitsigns = {
 }
 
 return M
-

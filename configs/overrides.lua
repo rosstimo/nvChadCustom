@@ -52,4 +52,21 @@ M.nvimtree = {
   },
 }
 
+M.cmp = {
+  sources = {
+    { name = 'nvim_lsp' },
+    { name = 'luasnip' },
+    { name = 'buffer' , keyword_length = 3 },
+    { name = 'path' , keyword_length = 2},
+    { name = 'look',
+      keyword_length = 1,
+      option = {
+        convert_case = true,
+        loud = true,
+        dict = '/usr/share/dict/words'
+      }
+    },
+  },
+}
+
 return M
