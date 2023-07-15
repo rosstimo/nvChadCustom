@@ -1,6 +1,6 @@
 local opt = vim.opt
 local g = vim.g
--- local autocmd = vim.api.nvim_create_autocmd
+local autocmd = vim.api.nvim_create_autocmd
 
 
 
@@ -47,6 +47,25 @@ opt.updatetime = 250
 -- when cursor reaches end/beginning of line
 opt.whichwrap:append "<>[]hl"
 
+-- -- use shellcheck to proivde linting for shell scripts
+-- opt.makeprg = "shellcheck -f gcc -x"
+-- autocmd("BufWritePost" , {
+--   pattern = "*",
+--   command = ":silent make | redraw!"
+-- })
+-- --open quick fix list if chelcheck found error
+--
+-- --au QuickFixCmdPost [^l]* nested cwindow
+-- autocmd("QuickFixCmdPost",{
+--   pattern = "[^l]*",
+--   command = "nested cwindow"
+-- })
+-- --au QuickFixCmdPost    l* nested lwindow
+-- autocmd("QuickFixCmdPost",{
+--   pattern = "l*",
+--   command = " nested lwindow",
+-- })
+--
 g.mapleader = " "
 
 
@@ -55,3 +74,5 @@ g.mapleader = " "
 --   pattern = "*",
 --   command = "tabdo wincmd =",
 -- })
+
+-- 

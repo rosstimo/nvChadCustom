@@ -70,9 +70,9 @@ local plugins = {
   {
     "github/copilot.vim",
     lazy = false,
-    config = function()
-      require "custom.configs.copilot"
-    end,
+    -- config = function()
+    --   require "custom.configs.copilot"
+    -- end,
   },
 
 

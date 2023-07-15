@@ -472,4 +472,23 @@ M.gitsigns = {
   },
 }
 
+M.copilot = {
+  -- plugin = true,
+  --
+  -- n = {
+  --   ["<leader>P"] = {
+  --     function()
+  --       require("copilot").status()
+  --     end,
+  --     "Run Copilot",
+  --   },
+  -- },
+  i = {
+    ["<C-p>"] = { "<cmd> :Copilot<CR>", "Run Copilot" },
+    --["<M-.>"] = {"<cmd> :Copilot#copilot-i_ALT-\\<cr>", "suggest" },
+            
+  },
+
+}
+
 return M

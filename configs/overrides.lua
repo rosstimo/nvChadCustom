@@ -53,6 +53,7 @@ M.nvimtree = {
 }
 
 M.cmp = {
+
   sources = {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
@@ -66,6 +67,9 @@ M.cmp = {
         dict = '/usr/share/dict/words'
       }
     },
+  },
+  completion = {
+    autocomplete = false,
   },
 }
 
