@@ -2,23 +2,62 @@
 -- n, v, i, t = mode names
 
 local M = {}
+M.test = {
+  n = {
+    ["<F4>"] = {
+      function()
+        vim.notify("hello")
+        --require("notify")("My super important message") --vim.fn.expand("%")
+        vim.notify(vim.fn.expand("%:r") .. ".pdf")
+        os.remove(vim.fn.expand("%:r") .. ".pdf")
+      end,
+      "test notify"
+    },
+
+    ["<F5>"] = {
+    --[[ compile the current buffer assumeing it is source code or a LaTeX file.
+         requires compilar shell script to be available and added to PATH.
+         TODO: I may want to play around with what to do if the current file can't
+         be compiled. a clean fail and notification at least.
+    --]]
+      function()
+        os.remove(vim.fn.expand("%:r") .. ".pdf")
+        os.execute("compiler " .. vim.fn.expand("%") ..  " > /dev/null && " ..
+          "texclear " .. vim.fn.expand("%") .. " > /dev/null")
+        vim.notify("Compiling: " .. vim.fn.expand("%:r") .. ".tex", 2)
+        local fileExists=io.open(vim.fn.expand("%:r") .. ".pdf")
+        if fileExists == nil then
+          vim.notify("Compile Error!" .. vim.fn.expand("%:r") .. ".tex", 2)
+        else
+          os.remove(vim.fn.expand("%:r") .. ".log")
+        end
+      end,
+      "run compile script"
+    },
+    ["<F6>"] = {
+      --[[  open a pdf file with the same path/name as the current buffer
+            i.e. after compile of a LaTeX file. previewpdf shell script must be 
+            available and added to PATH. uses zathura pdf due to its auto update
+            on recompile so you don't have to close and reopen it.
+      --]]
+      function ()
+        local file_name=vim.fn.expand("%:r") .. ".pdf"
+        local fileExists=io.open(file_name, "r")
+        if fileExists==nil then
+          vim.notify(file_name .. "", 2)
+        else
+          os.execute("previewpdf " .. vim.fn.expand("%:r") .. ".pdf")
+        end
+      end,
+      "preview pdf"
+    },
+  },
+}
 
 M.maps = {
   n = {
     ["<leader>m"] = {":map<cr>", "Show keymaps"},
   },
-}
-
-M.crazy = {
-
-  v = {
-    ["J"] = { ":m '>+1<CR>gv=gv", "Move Selected Down"},
-    ["K"] = { ":m '<-2<CR>gv=gv", "Move Selected Up"},
-    ["L"] = { ">gv" , "Move Selected Left"},
-    ["H"] = { "<gv" , "Move Selected Right"},
-
-  },
-
 }
 
 M.general = {
@@ -75,6 +114,10 @@ M.general = {
   v = {
     ["<Up>"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', "move up", opts = { expr = true } },
     ["<Down>"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', "move down", opts = { expr = true } },
+    ["J"] = { ":m '>+1<CR>gv=gv", "Move Selected Down"},
+    ["K"] = { ":m '<-2<CR>gv=gv", "Move Selected Up"},
+    ["L"] = { ">gv" , "Move Selected Left"},
+    ["H"] = { "<gv" , "Move Selected Right"},
   },
 
   x = {
