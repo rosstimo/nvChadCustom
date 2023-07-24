@@ -28,8 +28,8 @@ local plugins = {
     opts = overrides.mason
   },
 
-  {
-    "nvim-treesitter/nvim-treesitter",
+  -- {
+    -- "nvim-treesitter/nvim-treesitter",
     -- "p00f/nvim-ts-rainbow",
     -- require("nvim-treesitter.configs").setup {
     --   highlight = {
@@ -45,14 +45,18 @@ local plugins = {
     --     -- termcolors = {} -- table of colour name strings
     --   },
     -- },
-    opts = overrides.treesitter,
-  },
+    -- opts = overrides.treesitter,
+  -- },
 
   {
     "nvim-tree/nvim-tree.lua",
     opts = overrides.nvimtree,
   },
 
+  {
+    "lewis6991/gitsigns.nvim",
+    opts = overrides.gitsigns,
+  },
   -- Install a plugin
   {
     "max397574/better-escape.nvim",
