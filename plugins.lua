@@ -24,6 +24,14 @@ local plugins = {
 
   -- override plugin configs
   {
+    "hrsh7th/nvim-cmp",
+    opts = function()
+      -- require "plugins.configs.lspconfig"
+      require "custom.configs.cmp"
+    end, -- Override to setup mason-lspconfig
+    -- opts = overrides.cmp,
+  },
+  {
     "williamboman/mason.nvim",
     opts = overrides.mason
   },
@@ -42,6 +50,7 @@ local plugins = {
     "lewis6991/gitsigns.nvim",
     opts = overrides.gitsigns,
   },
+
   -- Install a plugin
   {
     "max397574/better-escape.nvim",
