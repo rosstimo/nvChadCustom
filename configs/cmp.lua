@@ -79,7 +79,8 @@ local options = {
       behavior = cmp.ConfirmBehavior.Insert,
       select = true,
     },
-    ["<Tab>"] = cmp.mapping(function(fallback)
+
+    ["C-J"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
       elseif require("luasnip").expand_or_jumpable() then
@@ -88,10 +89,11 @@ local options = {
         fallback()
       end
     end, {
-      "i",
-      "s",
-    }),
-    ["<S-Tab>"] = cmp.mapping(function(fallback)
+        "i",
+        "s",
+      }),
+
+    ["C-K"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
       elseif require("luasnip").jumpable(-1) then
@@ -104,13 +106,7 @@ local options = {
       "s",
     }),
   },
-  -- sources = {
-  --   { name = "nvim_lsp" },
-  --   { name = "luasnip" },
-  --   { name = "buffer" },
-  --   { name = "nvim_lua" },
-  --   { name = "path" },
-  -- },
+
 sources = {
     { name = 'nvim_lsp',keyword_length = 3 , group_index = 1},
     { name = 'luasnip', keyword_length = 3, group_index = 2},
