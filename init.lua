@@ -19,11 +19,11 @@ opt.smarttab = true
 opt.tabstop = 2
 opt.softtabstop = 2
 opt.colorcolumn = "90"
-
 opt.fillchars = { eob = " " }
 opt.ignorecase = true
 opt.smartcase = true
 opt.mouse = "a"
+opt.wrap = false
 
 -- Numbers
 opt.number = true
@@ -47,32 +47,32 @@ opt.updatetime = 250
 -- when cursor reaches end/beginning of line
 opt.whichwrap:append "<>[]hl"
 
--- -- use shellcheck to proivde linting for shell scripts
--- opt.makeprg = "shellcheck -f gcc -x"
--- autocmd("BufWritePost" , {
---   pattern = "*",
---   command = ":silent make | redraw!"
--- })
--- --open quick fix list if chelcheck found error
---
--- --au QuickFixCmdPost [^l]* nested cwindow
--- autocmd("QuickFixCmdPost",{
---   pattern = "[^l]*",
---   command = "nested cwindow"
--- })
--- --au QuickFixCmdPost    l* nested lwindow
--- autocmd("QuickFixCmdPost",{
---   pattern = "l*",
---   command = " nested lwindow",
--- })
---
+-- use shellcheck to proivde linting for shell scripts
+opt.makeprg = "shellcheck -f gcc -x"
+autocmd("BufWritePost" , {
+  pattern = "*",
+  command = ":silent make | redraw!"
+})
+--open quick fix list if chelcheck found error
+
+--au QuickFixCmdPost [^l]* nested cwindow
+autocmd("QuickFixCmdPost",{
+  pattern = "[^l]*",
+  command = "nested cwindow"
+})
+--au QuickFixCmdPost    l* nested lwindow
+autocmd("QuickFixCmdPost",{
+  pattern = "l*",
+  command = " nested lwindow",
+})
+
 g.mapleader = " "
 
 
 -- Auto resize panes when resizing nvim window
--- autocmd("VimResized", {
---   pattern = "*",
---   command = "tabdo wincmd =",
--- })
+autocmd("VimResized", {
+  pattern = "*",
+  command = "tabdo wincmd =",
+})
 
--- 
+
